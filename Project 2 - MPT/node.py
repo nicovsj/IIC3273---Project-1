@@ -27,6 +27,9 @@ class Node:
             self.path = path
             self.data = data
 
+        def __str__(self):
+            return 'Leaf Node\n Path = {}, Data = {}'.format(self.path, self.data)
+
         def encode(self):
             return rlp.encode([self.path.encode(True), self.data])
 
@@ -34,6 +37,9 @@ class Node:
         def __init__(self, path, next_ref):
             self.path = path
             self.next_ref = next_ref
+
+        def __str__(self):
+            return 'Extension Node\n Path = {}, Next_Reference = {}'.format(self.path, self.next_ref)
 
         def encode(self):
             next_ref = _prepare_reference_for_encoding(self.next_ref)
@@ -43,6 +49,9 @@ class Node:
         def __init__(self, branches, data=None):
             self.branches = branches
             self.data = data
+
+        def __str__(self):
+            return 'Branch Node \n Branches = {} \n Data = {}'.format(self.branches, self.data)
 
         def encode(self):
             branches = list(map(_prepare_reference_for_encoding, self.branches))
