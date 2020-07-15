@@ -18,9 +18,13 @@ El codigo está separado en cuatro archivos de código:
 3. <code>node.py</code>
 3. <code>mpt.py</code>
 
-## Demo de uso
-El archivo <code> Demo.ipynb </code> contiene una demo del uso de la libreria. Para correr el notebook basta tener los requerimientos instalados y el código base. 
-
 ## Modificaciones
 * Se agrega el archivo <code>Demo.ipynb</code> para tener un demo interactivo de la librería
 * Se agregan métodos <code>\_\_repr\_\_</code> para los objetos de la clase <code> Node </code>
+
+## Demo de uso
+El archivo <code> Demo.ipynb </code> contiene una demo del uso de la libreria. Para correr el notebook basta tener los requerimientos instalados y el código base. En la demo se agregan 3 pares (key,value) y se obtiene el siguiente MPT:
+
+![Demo MPT](https://user-images.githubusercontent.com/26121579/87588379-8fa9c380-c6b1-11ea-8fff-a68fc78b6683.png)
+
+
