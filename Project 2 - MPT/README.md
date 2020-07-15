@@ -13,11 +13,10 @@ El código base es de: https://github.com/popzxc/merkle-patricia-trie
 
 ## Estructura del codigo
 El codigo está separado en cuatro archivos de código: 
-1. <code>hash.py</code>
-2. <code>nibble_path.py</code>
-3. <code>node.py</code>
-3. <code>mpt.py</code>
-
+1. <code>hash.py</code> : este archivo contiene las funciones para hashear los datos usando keccak256
+2. <code>nibble_path.py</code> : en este archivo se encuentra la clase NibblePath que se encarga de trabajar con los caminos de nibbles compuestos por las ramas y nodos del arbol. 
+3. <code>node.py</code> : en este archivo se encuentra la clase Nodo, con subclases Hoja, Extensión y Rama (leaf, extension y branch). cada subclase posee métodos de encoding/decoding que utilizan la librería rlp (recurvise lenght prefix) de Python. Cada una de las subclases tiene una estructura distinta, que sigue el estándar de Ethereum: nodos Hoja guardan lo que resta de su key dado el camino subyacente (en este caso llamado path) y el dato almacenado. Las ramas branches guarda un arreglo de largo 16 que da lugar a cada uno de los hijos que puede tener este nodo. Además, se mantine un espacio para guardar datos, en caso de que el camino desde la raiz al nodo Branch sea una key.  Finalmente los nodos de extensión guardan un prefijo (que comparten todos los caminos hijos desde el nodo en cuestión) y una referencia a un siguiente nodo (que será un nodo Rama)
+3. <code>mpt.py</code> : finalmente, este archivo arma la estructura del Patricia Merkle Trie que permite crear un arbol, añadir/actualizar/eliminar pares (key, value) en el arbol, obtener el hash del arbol (asociado a su raiz). 
 ## Modificaciones
 * Se agrega el archivo <code>Demo.ipynb</code> para tener un demo interactivo de la librería
 * Se agregan métodos <code>\_\_repr\_\_</code> para los objetos de la clase <code> Node </code>
